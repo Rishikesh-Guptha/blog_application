@@ -1,8 +1,13 @@
 /** @format */
-
+// Install express cors sequelize sequelize-cli
 const express = require("express");
 const app = express();
+const db = require("./models");
 
-app.listen(3000, () => {
-	console.log("This is running in 3000 port");
+db.sequelize.sync().then(() => {
+	app.listen(3000, () => {
+		console.log("This is running in 3000 port");
+	});
 });
+
+
