@@ -3,6 +3,12 @@
 const express = require("express");
 const app = express();
 const db = require("./models");
+const PostRouter = require("./routes/Posts");
+app.use(express.json());
+//Routers- (what we name the url,location of the url file)
+app.use("/posts", PostRouter);
+
+
 
 db.sequelize.sync().then(() => {
 	app.listen(3000, () => {
